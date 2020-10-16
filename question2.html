@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Medium Quiz</title>
+</head>
+<script>
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+
+window.onload = function () {
+    var sec = 30,
+        display = document.querySelector('#time');
+    startTimer(sec, display);
+};
+</script>
+<style>
+body {
+background-color: lightblue;
+font-family: Helvetica;
+}
+
+#main {
+width: 80%;
+max-width: 950px;
+border: 1px gray solid;
+margin: auto;
+padding: 10px;
+background-color: white;
+border-radius: 10px;
+}
+label {
+display: block;
+}
+
+input {
+width: 30px;
+margin-left: 20px;
+}
+
+h2 {
+clear: both;
+padding-top: 20px;
+}
+
+button {
+width: 100px;
+margin-top: 20px;
+}
+
+#header {
+margin-top: 0;
+border: 2px solid black;
+padding: 5px;
+height: 250px;
+background: beige;
+background-image: url("code.jpg");
+color: white;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+</style>
+
+<body >
+
+<div id="main"><!-- open main div -->
+
+<form id="form1">
+
+
+<div id="basic">
+<div> <span id="time">00:30</span> </div>
+<h2>In which year of First World War Germany declared war on Russia and France??</h2>
+<label for="var_string"><input type="radio" name="variable" value="10" id="var_string" />1914.</label>
+<label for="var_join"><input type="radio" name="variable" value="0" id="var_join" />1915</label>
+<label for="var_info"><input type="radio" name="variable" value="0" id="var_info" />1916</label>
+<label for="var_condition"><input type="radio" name="variable" value="0" id="var_condition"/>1917</label>
+
+<h2>ICAO stands for?</h2>
+<label for="sub_string"><input type="radio" name="sub" value="10" id="sub_string"/>International Civil Aviation Organization.</label>
+<label for="sub_join"><input type="radio" name="sub" value="0" id="sub_join"/>Indian Corporation of Agriculture Organization</label>
+<label for="sub_info"><input type="radio" name="sub" value="0" id="sub_info" />Institute of Company of Accounts Organization</label>
+<label for="sub_condition"><input type="radio" name="sub" value="0" id="sub_condition" />None of the above.</label>
+
+<h2>India's first Technicolor film ____ in the early 1950s was produced by ____?</h2>
+<label for="cat_string"><input type="radio" name="con" value="10" id="cat_string" />'Jhansi Ki Rani', Sohrab Modi</label>
+<label for="cat_join"><input type="radio" name="con" value="0" id="cat_join" />'Jhansi Ki Rani', Sir Syed Ahmed.</label>
+<label for="cat_info"><input type="radio" name="con" value="0" id="cat_info" />'Mirza Ghalib', Sohrab Modi</label>
+<label for="cat_condition"><input type="radio" name="con" value="0" id="cat_condition" />'Mirza Ghalib', Munshi Premchand</label>
+
+<h2>India has largest deposits of ____ in the world.?</h2>
+<label for="if_string"><input type="radio" name="con1" value="0" id="if_string" />gold</label>
+<label for="if_join"><input type="radio" name="con1" value="0" id="if_join" />copper.</label>
+<label for="if_info"><input type="radio" name="con1" value="10" id="if_info" />mica</label>
+<label for="if_condition"><input type="radio" name="con1"  value="0" id="if_condition" />None of the above</label>
+
+<h2>How many Lok Sabha seats belong to Rajasthan?</h2>
+<label for="if_string"><input type="radio" name="ifstate" value="0" id="if_string" />32</label>
+<label for="if_join"><input type="radio" name="ifstate" value="10" id="if_join" />25</label>
+<label for="if_info"><input type="radio" name="ifstate" value="0" id="if_info" />30</label>
+<label for="if_condition"><input type="radio" name="ifstate"  value="0" id="if_condition" />17</label>
+
+<button type="submit" value="Submit">Submit</button>
+<p>Your grade is: <span id="grade">__</span></p>
+<p id="grade2"></p>
+</div>
+</form>
+<div>
+
+
+
+<script>
+function basic() {
+  var x = document.getElementById("basic");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+</div>
+<script>
+
+
+document.getElementById("form1").onsubmit=function() {
+       variable = parseInt(document.querySelector('input[name = "variable"]:checked').value);
+	   sub = parseInt(document.querySelector('input[name = "sub"]:checked').value);
+	   con = parseInt(document.querySelector('input[name = "con"]:checked').value);
+	   con1 = parseInt(document.querySelector('input[name = "con1"]:checked').value);
+	   ifstate = parseInt(document.querySelector('input[name = "ifstate"]:checked').value);
+	   
+	   
+	   result = variable + sub + con + ifstate;
+	   
+	document.getElementById("grade").innerHTML = result;
+	   
+if (result == 0) {result2 = "General Knowledge"};
+if (result == 5) {result2 = "General Knowledge"};
+if (result == 10) {result2 = "Poor"};
+if (result == 15) {result2 = "Bad"};
+if (result == 20) {result2 = "Good"};
+if (result == 25) {result2 = "Strong"};
+document.getElementById("grade2").innerHTML = result2;
+return false; // required to not refresh the page; just leave this here
+} //this ends the submit function
+ 
+
+
+</script>
+
+
+</body>
+
+
+
+
+
+</html>
